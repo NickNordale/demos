@@ -14,6 +14,7 @@ cor(hale.data$le, hale.data$hale)
 plot(hale.data$le, hale.data$hale)
 
 # As life expectancy increases, at what rate does hale increase?
+lm(hale.data$le ~ hale.data$hale, data=hale.data)
 
 # Compute change in life expectancy, change in hale
 wide.data <- wide.data %>% 
@@ -25,3 +26,9 @@ lm(hale.change ~ le.change, data=wide.data)
 
 # What is the distribution in the ratios of le to hale?
 hist(wide.data$le.change / wide.data$hale.change)
+
+
+# Analysis: is there more expansion or compression?
+mean(wide.data$hale.change - wide.data$le.change)
+# Ans: The calculation above results in a positive number
+# which means that there is slight compression in this data set.
